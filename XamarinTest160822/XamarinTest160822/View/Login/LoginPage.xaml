@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinTest160822.View.Login.LoginPage"
+             xmlns:template="clr-namespace:XamarinTest160822.Template"
+             BindingContext="{Binding Main, Source={x:StaticResource Locator}}">
+    <ContentPage.Content>
+        <Grid BindingContext="{Binding UserViewModel}">
+            <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                <Label Text="Login" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+                <Label Text="Email"></Label>
+                <Entry Placeholder="ejemplo@correo.com" Text="{Binding Email}"/>
+                <Label Text="Password"></Label>
+                <Entry Placeholder="*******" IsPassword="True" Text="{Binding Password}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="No tienes cuenta?"/>
+                    <Label Text="Registrate!" TextColor="Blue" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigationPush}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <Button Text="Iniciar Sesion" WidthRequest="300" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="1" Command="{Binding LoginCommand}"/>
+            </StackLayout>
+            <template:LoadingScreen IsVisible="{Binding IsRefresh}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

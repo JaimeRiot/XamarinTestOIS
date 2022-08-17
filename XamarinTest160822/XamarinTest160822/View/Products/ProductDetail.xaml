@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinTest160822.View.Products.ProductDetail"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" >
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding ProductsViewModel, Mode=TwoWay}">
+            <StackLayout>
+                <Image Source="{Binding Product.Image}" WidthRequest="200"/>
+                <Label Text="{Binding Product.Title}"/>
+                <Label Text="{Binding Product.Category, StringFormat='Categoria: {0}'}"/>
+                <Frame CornerRadius="10" BackgroundColor="Green" HasShadow="False" HorizontalOptions="EndAndExpand">
+                    <Label Text="{Binding Product.Price, StringFormat='$ {0}'}" TextColor="White" HorizontalOptions="EndAndExpand"/>
+                </Frame>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Product.Rating.Rate, StringFormat='Rating: ⭐ {0}'}"/>
+                    <Label Text="{Binding Product.Rating.Count, StringFormat='Reviews: 👤 {0}'}" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

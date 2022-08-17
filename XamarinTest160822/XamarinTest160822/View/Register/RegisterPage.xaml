@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinTest160822.View.Register.RegisterPage"
+             xmlns:template="clr-namespace:XamarinTest160822.Template"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Grid BindingContext="{Binding UserViewModel}">
+            <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  >
+                <Label Text="Registro" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+                <Label Text="Nombre"></Label>
+                <Entry Placeholder="Nombre" Text="{Binding Name}"/>
+                <Label Text="Apellido"></Label>
+                <Entry Placeholder="Apellido" Text="{Binding LastName}"/>
+                <Label Text="Email"></Label>
+                <Entry Placeholder="ejemplo@correo.com" Text="{Binding Email}"/>
+                <Label Text="Password"></Label>
+                <Entry Placeholder="*******" Text="{Binding Password}" IsPassword="True"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Tienes cuenta?"/>
+                    <Label Text="Inicia sesion!"  TextColor="Blue" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigationPop}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <Button Text="Registrarse" WidthRequest="300" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="1" Command="{Binding RegisterCommand}"/>
+            </StackLayout>
+            <template:LoadingScreen IsVisible="{Binding IsRefresh}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
